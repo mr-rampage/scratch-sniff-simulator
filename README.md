@@ -10,3 +10,4 @@
 - [What Web Can Do](https://whatwebcando.today/)
 - [Scratch and Sniff History](https://en.wikipedia.org/wiki/Scratch_and_sniff)
 - [Touch Events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events)
+- [Web Manifest](https://web.dev/learn/pwa/web-app-manifest/)
