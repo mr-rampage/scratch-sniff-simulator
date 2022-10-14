@@ -1,5 +1,9 @@
 # scratch-sniff-simulator
 
+## Tech
+
+- [LitElement](https://lit.dev/)
+
 ## Resources
 
 - [Smell Database](https://www.fragrantica.com/notes/)
