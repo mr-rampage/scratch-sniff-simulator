@@ -26,7 +26,9 @@ function setupView(element) {
     
 function setupEvents(element) {
     element.addEventListener('mousemove', handleMouseMove(element))
-    element.addEventListener('touchmove', handleMouseMove(element))
+    element.addEventListener("touchstart", function(e){ if (e.target.nodeName == 'CANVAS') { e.preventDefault(); } handleMouseMove(element)}, false);
+    element.addEventListener("touchend", function(e){ if (e.target.nodeName == 'CANVAS') { e.preventDefault(); } handleMouseMove(element)}, false);
+    element.addEventListener("touchmove", function(e){ if (e.target.nodeName == 'CANVAS') { e.preventDefault(); } handleMouseMove(element)}, false);
 }
 
 function createScratchUpEvent() {
