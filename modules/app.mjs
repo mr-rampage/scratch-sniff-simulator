@@ -40,15 +40,7 @@ function main() {
     runTutorial();
 }
 function shake(){
-    let delay = 70;
-    let shakes = 3;
-    window.moveBy(-10, 0);
-    for (let j = shakes; j > 0; j--) {
-        setTimeout( "window.moveBy(20, 0)", j*delay );
-        setTimeout( "window.moveBy(-20, 0)",
-            j*delay+(delay/2));
-    }
-    setTimeout( "window.moveBy(10, 0)", (shakes+1)*delay );
+    
 }
 
 function presentSmells() {
