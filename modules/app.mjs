@@ -50,7 +50,7 @@ function presentSmells() {
     smellContainer.appendChild(createSmell(smellContainer, smell));
 }
 
-function createSmell(parent, smell = "placeholder text") {
+function createSmell(parent, smell) {
     const text = document.createElement("span");
     text.classList.add('smell');
     text.style.left = randomX() + "vw";
