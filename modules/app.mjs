@@ -1,28 +1,39 @@
 ﻿import ScratchSurface from "./scratch-surface.mjs";
-import ScratchSmell from "./scratch-smell.mjs";
 import prepareForScratching from './itch.mjs';
-import createItch from "./scratch-model.mjs";
-import getRandomSmell from "./scratch-smell.mjs";
+import chooseRandomItem from "./scratch-smell.mjs";
+import getItches from "./itch-database.mjs";
+import getSmells from "./smell-database.mjs";
 
 customElements.define("scratch-surface", ScratchSurface);
-customElements.define("scratch-smell", ScratchSmell, { extends: "span"});
 document.addEventListener("DOMContentLoaded",main);
 
-function main() {
-    prepareForScratching(document.body, createItch());
+function displayItch(itch) {
+    const scratch = document.getElementsByTagName("scratch-surface");
+    scratch[0].style.background = `url('${itch.image}')`;
+    scratch[0].style.backgroundSize = "cover";
+}
 
-    document.body.addEventListener('itch-satisfied', satisfactionReaction);
+function main() {
+    const itch = chooseRandomItem(getItches());
+    const scratchEffect = createAudioEffect(itch.audio);
+    const satisfiedEffect =  createAudioEffect(itch.satisfiedAudio);
+
+    prepareForScratching(document.body, itch);
+    
+    displayItch(itch);
+
+    document.body.addEventListener('itch-satisfied', satisfiedEffect.play);
 
     document.body.addEventListener("scratch-up", presentSmells);
     document.body.addEventListener("scratch-down", presentSmells);
     
     document.body.addEventListener("scratch-up", vibrationSensation);
     document.body.addEventListener("scratch-down", vibrationSensation);
-}
 
-function satisfactionReaction() {
-    const feedback = document.getElementById('itch')
-    feedback.innerText = "Feels so goood!!";
+    document.body.addEventListener("scratch-up", scratchEffect.play);
+    document.body.addEventListener("scratch-down", scratchEffect.play);
+    
+    document.body.addEventListener("pointerup", scratchEffect.stop);
 }
 
 function presentSmells() {
@@ -50,7 +61,7 @@ function createSmell(parent, smell = "placeholder text") {
     setTimeout(() => text.classList.add('magictime', 'puffOut'))
    // setTimeout(() => text.classList.add('magictime', 'slideUp'), 2000)
     setTimeout(() => parent.removeChild(text), 2000);
-    return text;
+    return text; 
 }
 
 function randomX() {
@@ -60,4 +71,16 @@ function randomX() {
 function vibrationSensation()
 {
     navigator.vibrate(200);
+}
+
+function createAudioEffect(audioUrl){
+    const audio = document.createElement('audio');
+    const source = document.createElement('source');
+    source.setAttribute('src', audioUrl)
+    audio.appendChild(source);
+    
+    return {
+        play : () => audio.play(),
+        stop : () => audio.pause()
+    };
 }

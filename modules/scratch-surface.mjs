@@ -10,11 +10,6 @@
     }
 }
 
-function createImage(url)
-{
-    // return an image
-}
-
 function setupView(element) {
     const template = document.getElementById(
         "scratch-surface-template"
@@ -25,8 +20,8 @@ function setupView(element) {
 }
     
 function setupEvents(element) {
-    element.addEventListener('mousemove', handleMouseMove(element))
-    element.addEventListener('touchmove', navigator.vibrate(200))
+    element.addEventListener('pointermove', handleMouseMove(element));
+    element.addEventListener('mousemove', handleMouseMove(element));
 }
 
 function createScratchUpEvent() {

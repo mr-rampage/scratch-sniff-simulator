@@ -6,40 +6,39 @@
     <link rel="manifest" href="./app.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic/1.1.0/magic.min.css"/>
     <style>
+        body 
+        {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            overscroll-behavior: contain;
+        }
         #smells {
             display: block;
             position : relative;
+            overflow: hidden;
+            font-size: 4em;
+            height: 1.5em;
+            width: 100vw;
         }
         
         #smells .smell {
             display: block;
             position: absolute;
-            font-size: 4em;
         }
     </style>
     <script src="modules/app.mjs" type="module"></script>
-    <script defer>
-        customElements
-            .whenDefined("scratch-surface")
-            .then(() => {
-                const scratch = document.getElementsByTagName("scratch-surface");
-                scratch[0].style.background = "url('https://dinoanimals.com/wp-content/uploads/2021/01/Burmese-cat-16.jpg')"
-                scratch[0].style.backgroundSize = "cover";
-                
-            });
-    </script>
     <template id="scratch-surface-template">
         <slot></slot>
     </template>
 </head>
 <body>
-    <div style="height:50vh">
-        <scratch-surface style="height: 90%; display: block;">
+    <div style="height:100vh;">
+        <scratch-surface style="height: 80vh; display: block; touch-action: none">
         </scratch-surface>
-        <div id="itch" style="height:10%;" class="tilt-shaking">
+        <div id="smells">
         </div>
-    </div>
-    <div id="smells">
     </div>
 </body>
 </html>
