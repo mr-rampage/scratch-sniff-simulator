@@ -5,7 +5,7 @@ import getItches from "./itch-database.mjs";
 import getSmells from "./smell-database.mjs";
 
 customElements.define("scratch-surface", ScratchSurface);
-document.addEventListener("DOMContentLoaded",main);
+document.addEventListener("DOMContentLoaded", main);
 
 function displayItch(itch) {
     const scratch = document.getElementsByTagName("scratch-surface");
@@ -16,24 +16,38 @@ function displayItch(itch) {
 function main() {
     const itch = chooseRandomItem(getItches());
     const scratchEffect = createAudioEffect(itch.audio);
-    const satisfiedEffect =  createAudioEffect(itch.satisfiedAudio);
+    const satisfiedEffect = createAudioEffect(itch.satisfiedAudio);
 
     prepareForScratching(document.body, itch);
-    
+
     displayItch(itch);
 
     document.body.addEventListener('itch-satisfied', satisfiedEffect.play);
 
+    document.body.addEventListener("scratch-up", shake);
+    document.body.addEventListener("scratch-down", shake);
+
     document.body.addEventListener("scratch-up", presentSmells);
     document.body.addEventListener("scratch-down", presentSmells);
-    
+
     document.body.addEventListener("scratch-up", vibrationSensation);
     document.body.addEventListener("scratch-down", vibrationSensation);
 
     document.body.addEventListener("scratch-up", scratchEffect.play);
     document.body.addEventListener("scratch-down", scratchEffect.play);
-    
+
     document.body.addEventListener("pointerup", scratchEffect.stop);
+}
+function shake(){
+    let delay = 70;
+    let shakes = 3;
+    window.moveBy(-10, 0);
+    for (let j = shakes; j > 0; j--) {
+        setTimeout( "window.moveBy(20, 0)", j*delay );
+        setTimeout( "window.moveBy(-20, 0)",
+            j*delay+(delay/2));
+    }
+    setTimeout( "window.moveBy(10, 0)", (shakes+1)*delay );
 }
 
 function presentSmells() {
@@ -56,19 +70,18 @@ function randomX() {
     return Math.floor(Math.random() * 100);
 }
 
-function vibrationSensation()
-{
+function vibrationSensation() {
     navigator.vibrate(200);
 }
 
-function createAudioEffect(audioUrl){
+function createAudioEffect(audioUrl) {
     const audio = document.createElement('audio');
     const source = document.createElement('source');
     source.setAttribute('src', audioUrl)
     audio.appendChild(source);
-    
+
     return {
-        play : () => audio.play(),
-        stop : () => audio.pause()
+        play: () => audio.play(),
+        stop: () => audio.pause()
     };
 }
