@@ -2,10 +2,19 @@
 // itch is an element
 export function start(itch)
 {
-    const resistance = itch.resistance;
-    const scrathes = 0;
-    itch.addEventListener("scratch-up", () => {})
-    itch.addEventListener("scratch-down", () => {})
+    let resistance = itch.resistance;
+    const handler = satisfactionDispatcher(itch, resistance);
+
+    itch.addEventListener("scratch-up", handler);
+    itch.addEventListener("scratch-down", handler);
+}
+
+function satisfactionDispatcher(itch, resistance) {
+    let scratches = 0;
+    return () => {
+        scratches += 1;
+        itch.dispatchEvent(scratches === resistance ? createSatisfied() : null)
+    };
 }
 
 function createSatisfied() {
