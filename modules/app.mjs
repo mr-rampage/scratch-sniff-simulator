@@ -2,6 +2,7 @@
 import prepareForScratching from './itch.mjs';
 import getRandomSmell from "./scratch-smell.mjs";
 import getItches from "./itch-database.mjs";
+import getSmells from "./smell-database.mjs";
 
 customElements.define("scratch-surface", ScratchSurface);
 document.addEventListener("DOMContentLoaded",main);
@@ -13,7 +14,7 @@ function displayItch(itch) {
 }
 
 function main() {
-    const itch = getItches()[2];
+    const itch = getItches()[0];
     const scratchEffect = createAudioEffect(itch);
 
     prepareForScratching(document.body, itch);
@@ -40,8 +41,7 @@ function satisfactionReaction() {
 }
 
 function presentSmells() {
-    const smellDatabase = [{"name": "good"}, {"name": "bad"}, {"name": "yucky"}];
-    const smell = getRandomSmell(smellDatabase);
+    const smell = getRandomSmell(getSmells());
     const smellContainer = document.getElementById("smells")
     smellContainer.appendChild(createSmell(smellContainer, smell.name));
 }
