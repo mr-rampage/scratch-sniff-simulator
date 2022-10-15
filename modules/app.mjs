@@ -26,19 +26,30 @@ function satisfactionReaction() {
 }
 
 function presentSmells() {
-    const smellDatabase = [{"name": "good"}, {"name": "bad"}, {"name": "yucky"}];
+    const smellDatabase = [{"name": "good", "strength": "high"}, {"name": "bad", "strength":"low"}, {"name": "yucky", "strength":"medium"}];
     const smell = getRandomSmell(smellDatabase);
     const smellContainer = document.getElementById("smells")
-    smellContainer.appendChild(createSmell(smellContainer, smell.name));
+    smellContainer.appendChild(createSmell(smellContainer, smell));
 }
 
 function createSmell(parent, smell = "placeholder text") {
     const text = document.createElement("span");
     text.classList.add('smell');
     text.style.left = randomX() + "vw";
-    text.innerText = smell
-    setTimeout(() => text.classList.add('magictime', 'vanishIn', 'slideUp', 'vanishOut'), 4000)
-    setTimeout(() => parent.removeChild(text), 5000);
+    text.innerText = smell.name
+
+    if (smell.strength == "high") {
+        text.style.fontSize = "50px";
+    } else if (smell.strength == "medium") {
+        text.style.fontSize = "30px";
+        text.style.color = "gray";
+    } else {
+        text.style.fontSize = "15px";
+        text.style.color = "silver";
+    }
+    setTimeout(() => text.classList.add('magictime', 'puffOut'))
+   // setTimeout(() => text.classList.add('magictime', 'slideUp'), 2000)
+    setTimeout(() => parent.removeChild(text), 2000);
     return text;
 }
 
