@@ -29,16 +29,6 @@
         }
     </style>
     <script src="modules/app.mjs" type="module"></script>
-    <script defer>
-        customElements
-            .whenDefined("scratch-surface")
-            .then(() => {
-                const scratch = document.getElementsByTagName("scratch-surface");
-                scratch[0].style.background = "url('https://dinoanimals.com/wp-content/uploads/2021/01/Burmese-cat-16.jpg')"
-                scratch[0].style.backgroundSize = "cover";
-                
-            });
-    </script>
     <template id="scratch-surface-template">
         <slot></slot>
     </template>
@@ -53,8 +43,4 @@
         </div>
     </div>
 </body>
-
-<audio id="audio">
-    <source src = "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-four/foley_scratchcard_scratching_off_covering_long.mp3">
-</audio>
 </html>

@@ -1,16 +1,24 @@
 ﻿import ScratchSurface from "./scratch-surface.mjs";
 import prepareForScratching from './itch.mjs';
-import createItch from "./scratch-model.mjs";
 import getRandomSmell from "./scratch-smell.mjs";
+import getItches from "./itch-database.mjs";
 
 customElements.define("scratch-surface", ScratchSurface);
 document.addEventListener("DOMContentLoaded",main);
 
+function displayItch(itch) {
+    const scratch = document.getElementsByTagName("scratch-surface");
+    scratch[0].style.background = `url('${itch.image}')`;
+    scratch[0].style.backgroundSize = "cover";
+}
+
 function main() {
-    const itch = createItch();
+    const itch = getItches()[0];
     const scratchEffect = createAudioEffect(itch);
 
     prepareForScratching(document.body, itch);
+    
+    displayItch(itch);
 
     document.body.addEventListener('itch-satisfied', satisfactionReaction);
 
@@ -56,9 +64,6 @@ function vibrationSensation()
 {
     navigator.vibrate(200);
 }
-
-
-const scratchSound = document.getElementById("audio");
 
 function createAudioEffect(itch){
     const audio = document.createElement('audio');

@@ -10,11 +10,6 @@
     }
 }
 
-function createImage(url)
-{
-    // return an image
-}
-
 function setupView(element) {
     const template = document.getElementById(
         "scratch-surface-template"
