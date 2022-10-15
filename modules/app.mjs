@@ -34,6 +34,7 @@ function presentSmells() {
 
 function createSmell(parent, smell = "placeholder text") {
     const text = document.createElement("span");
+    text.className = "smell"
     text.innerText = smell
     setTimeout(() => parent.removeChild(text), 2000);
     return text;

@@ -26,6 +26,7 @@ function setupView(element) {
     
 function setupEvents(element) {
     element.addEventListener('mousemove', handleMouseMove(element))
+    element.addEventListener('touchmove', handleMouseMove(element))
 }
 
 function createScratchUpEvent() {
@@ -72,6 +73,7 @@ function handleMouseMove(element) {
         lastPosition = e.buttons > 0
             ? e.clientY
             : lastPosition;
+        return false;
     }
 }
 

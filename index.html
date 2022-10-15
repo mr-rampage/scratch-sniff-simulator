@@ -6,7 +6,22 @@
     <link rel="manifest" href="./app.webmanifest">
     <style>
         #smells {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #smells .smell {
+            display: block;
+            position: absolute;
+        }
+
+        @keyframes tilt-shaking {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
         }
     </style>
     <script src="modules/app.mjs" type="module"></script>
@@ -28,7 +43,7 @@
     <div style="height:50vh">
         <scratch-surface style="height: 90%; display: block;">
         </scratch-surface>
-        <div id="itch" style="height:10%;">
+        <div id="itch" style="height:10%;" class="tilt-shaking">
         </div>
     </div>
     <div id="smells">
