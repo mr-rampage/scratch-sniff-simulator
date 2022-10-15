@@ -37,10 +37,16 @@ function main() {
     document.body.addEventListener("scratch-down", scratchEffect.play);
 
     document.body.addEventListener("pointerup", scratchEffect.stop);
+    document.body.addEventListener("pointerup", unshake);
+
     runTutorial();
 }
 function shake(){
-    
+    if (document.body.classList.contains("shaking")) return 0;
+    document.body.classList.add("shaking");
+}
+function unshake(){
+    document.body.classList.remove("shaking");
 }
 
 function presentSmells() {
