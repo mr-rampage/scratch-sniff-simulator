@@ -1,6 +1,6 @@
 ﻿
 // itch is an element
-export default function start(itcher, itch)
+export default function prepareForScratching(itcher, itch)
 {
     const handler = satisfactionDispatcher(itcher, getSatisfaction(itch));
     itcher.addEventListener("scratch-up", handler);
