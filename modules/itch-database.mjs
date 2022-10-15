@@ -42,6 +42,10 @@ export default function getItches() {
         createItch("Sleeping man", "low",
             "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-69838/zapsplat_human_male_man_angry_grunt_growl_short_004_74265.mp3",
             "https://media.istockphoto.com/photos/sleepy-thick-guy-lying-on-couch-picture-id638744752?k=6&m=638744752&s=170667a&w=0&h=zGtYMkTswH4p4qad0rNGJE4GvoQzdwIez7aEpHamFmA="
+        ),
+        createItch("Toe Fungus", "high",
+            null,
+            "https://www.windyhillpodiatry.com/images/toenail-fungus-infection(1).png"
         )
     ];
 }
