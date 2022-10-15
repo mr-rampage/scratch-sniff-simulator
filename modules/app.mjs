@@ -1,5 +1,4 @@
 ﻿import ScratchSurface from "./scratch-surface.mjs";
-import ScratchSmell from "./scratch-smell.mjs";
 import prepareForScratching from './itch.mjs';
 import createItch from "./scratch-model.mjs";
 import getRandomSmell from "./scratch-smell.mjs";
