@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="manifest" href="./app.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic/1.1.0/magic.min.css"/>
     <style>
         #smells {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
+            position : relative;
         }
         
         #smells .smell {
             display: block;
             position: absolute;
-        }
-
-        @keyframes tilt-shaking {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            50% { transform: rotate(0deg); }
-            75% { transform: rotate(-5deg); }
-            100% { transform: rotate(0deg); }
+            font-size: 4em;
         }
     </style>
     <script src="modules/app.mjs" type="module"></script>

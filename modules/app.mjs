@@ -34,10 +34,16 @@ function presentSmells() {
 
 function createSmell(parent, smell = "placeholder text") {
     const text = document.createElement("span");
-    text.className = "smell"
+    text.classList.add('smell');
+    text.style.left = randomX() + "vw";
     text.innerText = smell
-    setTimeout(() => parent.removeChild(text), 2000);
+    setTimeout(() => text.classList.add('magictime', 'vanishIn', 'slideUp', 'vanishOut'), 4000)
+    setTimeout(() => parent.removeChild(text), 5000);
     return text;
+}
+
+function randomX() {
+    return Math.floor(Math.random() * 100);
 }
 
 function vibrationSensation()
