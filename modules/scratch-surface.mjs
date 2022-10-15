@@ -25,9 +25,7 @@ function setupView(element) {
 }
     
 function setupEvents(element) {
-    element.addEventListener('mousemove', handleMouseMove(element), navigator.vibrate(200))
-    element.addEventListener('touchmove', handleMouseMove(element), navigator.vibrate(200))
-    element.addEventListener('pointerdown', handleMouseMove(element), navigator.vibrate(200))
+    element.addEventListener('pointermove', handleMouseMove(element))
 }
 
 function createScratchUpEvent() {
