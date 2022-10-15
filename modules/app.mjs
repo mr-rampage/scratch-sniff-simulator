@@ -15,13 +15,14 @@ function displayItch(itch) {
 
 function main() {
     const itch = getItches()[0];
-    const scratchEffect = createAudioEffect(itch);
+    const scratchEffect = createAudioEffect(itch.audio);
+    const satisfiedEffect =  createAudioEffect(itch.satisfiedAudio);
 
     prepareForScratching(document.body, itch);
     
     displayItch(itch);
 
-    document.body.addEventListener('itch-satisfied', satisfactionReaction);
+    document.body.addEventListener('itch-satisfied', satisfiedEffect.play);
 
     document.body.addEventListener("scratch-up", presentSmells);
     document.body.addEventListener("scratch-down", presentSmells);
@@ -33,11 +34,6 @@ function main() {
     document.body.addEventListener("scratch-down", scratchEffect.play);
     
     document.body.addEventListener("pointerup", scratchEffect.stop);
-}
-
-function satisfactionReaction() {
-    const feedback = document.getElementById('itch')
-    feedback.innerText = "Feels so goood!!";
 }
 
 function presentSmells() {
@@ -65,10 +61,10 @@ function vibrationSensation()
     navigator.vibrate(200);
 }
 
-function createAudioEffect(itch){
+function createAudioEffect(audioUrl){
     const audio = document.createElement('audio');
     const source = document.createElement('source');
-    source.setAttribute('src', itch.audio)
+    source.setAttribute('src', audioUrl)
     audio.appendChild(source);
     
     return {
