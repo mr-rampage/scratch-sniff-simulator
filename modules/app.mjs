@@ -61,10 +61,8 @@ function createSmell(parent, smell) {
         text.style.fontSize = "2em";
     } else if (smell.strength === "medium") {
         text.style.fontSize = "1.5em";
-        //text.style.color = "#2B1B17";
     } else {
         text.style.fontSize = "1em";
-        //text.style.color = "silver";
     }
     setTimeout(() => text.classList.add('magictime', 'puffOut'), 2000)
     setTimeout(() => parent.removeChild(text), 4000);
