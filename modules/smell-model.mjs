@@ -1,10 +1,7 @@
-﻿export default function createSmell(name = '', description = '', fontStyle = '', fontColour = '', fontWeight = '')
+﻿export default function createSmell(name = '', description = '')
 {
     return {
         "name" : name,
         "description" : description,
-        "fontStyle" : fontStyle,
-        "fontColour" : fontColour,
-        "fontWeight" : fontWeight
     }
 }

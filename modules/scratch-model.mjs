@@ -1,28 +1,13 @@
-﻿export default function createItch(name = "", scratchShape = scratchShape.star, resistance = resistance.medium, coat = coat.twoLayer)
+﻿export default function createItch(name = "", resistance = resistance.medium)
 {
     return {
         "name" : name,
-        "scratchShape" : scratchShape,
-        "resistance" : resistance,
-        "coat" : coat
+        "resistance" : resistance
     }
-}
-
-const scratchShape = {
-    square: 'square',
-    circle: 'circle',
-    rectangle: 'rectangle',
-    star: 'star'
 }
 
 const resistance = {
     low: 'low',
     medium: 'medium',
     high: 'high'
-}
-
-const coat = {
-    oneLayer: 'one-layer',
-    twoLayer: 'two-layer',
-    threeLayer: 'three-layer'
 }
