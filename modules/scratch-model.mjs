@@ -1,6 +1,9 @@
-﻿export default function createItch(name = "")
+﻿export default function createItch(name = "", scratchShape = "", resistance = "", coat = "")
 {
     return {
-        "name" : name
+        "name" : name,
+        "scratchShape" : scratchShape,
+        "resistance" : resistance,
+        "coat" : coat
     }
 }
