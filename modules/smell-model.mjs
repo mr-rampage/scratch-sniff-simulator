@@ -1,9 +1,10 @@
 export default function createSmell(name = '', description = '', 
-                                    strength = 'low')
+                                    strength = 'low', color = 'gray')
 {
     return {
         name,
         description,
-        strength
+        strength,
+        color
     }
 }
