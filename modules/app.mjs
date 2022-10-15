@@ -37,6 +37,7 @@ function main() {
     document.body.addEventListener("scratch-down", scratchEffect.play);
 
     document.body.addEventListener("pointerup", scratchEffect.stop);
+    runTutorial();
 }
 function shake(){
     let delay = 70;
@@ -96,4 +97,15 @@ function createAudioEffect(audioUrl) {
         play: () => audio.play(),
         stop: () => audio.pause()
     };
+}
+
+function runTutorial() {
+    const text = document.createElement('span')
+    text.classList.add('tutorial', 'magictime', 'vanishIn')
+    text.innerText = "Scratch me!"
+    document.body.appendChild(text);
+    setTimeout(() => {
+        text.classList.add('vanishOut')
+    }, 2000);
+    setTimeout(() => document.body.removeChild(text), 4000);
 }
