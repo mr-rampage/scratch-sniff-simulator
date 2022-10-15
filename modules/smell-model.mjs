@@ -1,8 +1,9 @@
-﻿export default function createSmell(name = '', description = '')
+﻿export default function createSmell(name = '', description = '', 
+                                    strength = 'low')
 {
     return {
-        "name" : name,
-        "description" : description,
-        "strength" : strength
+        name,
+        description,
+        strength
     }
 }
