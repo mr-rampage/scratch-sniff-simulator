@@ -1,5 +1,8 @@
 # scratch-sniff-simulator
 
+## Sources
+- Perfume icon in web manifest is from flaticon.com
+
 ## Tech
 
 - [LitElement](https://lit.dev/)
