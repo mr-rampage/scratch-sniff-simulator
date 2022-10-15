@@ -3,5 +3,6 @@
     return {
         "name" : name,
         "description" : description,
+        "strength" : strength
     }
 }
