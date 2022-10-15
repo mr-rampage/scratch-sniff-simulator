@@ -38,7 +38,7 @@ function main() {
 
 function presentSmells() {
     const smellDatabase = [{"name": "good", "strength": "high"}, {"name": "bad", "strength":"low"}, {"name": "yucky", "strength":"medium"}];
-    const smell = getRandomSmell(smellDatabase);
+    const smell = chooseRandomItem(smellDatabase);
     const smellContainer = document.getElementById("smells")
     smellContainer.appendChild(createSmell(smellContainer, smell));
 }
