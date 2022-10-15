@@ -7,7 +7,8 @@ customElements.define("scratch-surface", ScratchSurface);
 document.addEventListener("DOMContentLoaded",main);
 
 function main() {
-    let itch = createItch();
+    const itch = createItch();
+    const scratchEffect = createAudioEffect(itch);
 
     prepareForScratching(document.body, itch);
 
@@ -19,10 +20,10 @@ function main() {
     document.body.addEventListener("scratch-up", vibrationSensation);
     document.body.addEventListener("scratch-down", vibrationSensation);
 
-    document.body.addEventListener("scratch-up", audioPlay);
-    document.body.addEventListener("scratch-down", audioPlay);
-
-    document.body.addEventListener("pointerup", audioPause);
+    document.body.addEventListener("scratch-up", scratchEffect.play);
+    document.body.addEventListener("scratch-down", scratchEffect.play);
+    
+    document.body.addEventListener("pointerup", scratchEffect.stop);
 }
 
 function satisfactionReaction() {
@@ -59,10 +60,14 @@ function vibrationSensation()
 
 const scratchSound = document.getElementById("audio");
 
-function audioPlay(itch){
-    scratchSound.play();
-}
-
-function audioPause(){
-    scratchSound.pause();
+function createAudioEffect(itch){
+    const audio = document.createElement('audio');
+    const source = document.createElement('source');
+    source.setAttribute('src', itch.audio)
+    audio.appendChild(source);
+    
+    return {
+        play : () => audio.play(),
+        stop : () => audio.pause()
+    };
 }
