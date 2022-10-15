@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="manifest" href="./app.webmanifest">
+    <style>
+        #smells {
+            text-align: center;
+        }
+    </style>
     <script src="modules/app.mjs" type="module"></script>
     <script defer>
         customElements
@@ -11,6 +16,7 @@
             .then(() => {
                 const scratch = document.getElementsByTagName("scratch-surface");
                 scratch[0].style.background = "url('https://dinoanimals.com/wp-content/uploads/2021/01/Burmese-cat-16.jpg')"
+                scratch[0].style.backgroundSize = "cover";
                 
             });
     </script>
@@ -19,10 +25,10 @@
     </template>
 </head>
 <body>
-    <div style="height:100vh">
-        <scratch-surface style="height: 50%; display: block;">
+    <div style="height:50vh">
+        <scratch-surface style="height: 90%; display: block;">
         </scratch-surface>
-        <div id="itch" style="height:50%;">
+        <div id="itch" style="height:10%;">
         </div>
     </div>
     <div id="smells">

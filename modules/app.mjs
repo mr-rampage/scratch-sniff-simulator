@@ -26,10 +26,10 @@ function satisfactionReaction() {
 }
 
 function presentSmells() {
-    const smellDatabase = [];
+    const smellDatabase = [{"name": "good"}, {"name": "bad"}, {"name": "yucky"}];
     const smell = getRandomSmell(smellDatabase);
     const smellContainer = document.getElementById("smells")
-    smellContainer.appendChild(createSmell(smellContainer, smell));
+    smellContainer.appendChild(createSmell(smellContainer, smell.name));
 }
 
 function createSmell(parent, smell = "placeholder text") {
