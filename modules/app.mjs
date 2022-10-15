@@ -9,7 +9,9 @@ customElements.define("scratch-smell", ScratchSmell, { extends: "span"});
 document.addEventListener("DOMContentLoaded",main);
 
 function main() {
-    prepareForScratching(document.body, createItch());
+    let itch = createItch();
+
+    prepareForScratching(document.body, itch);
 
     document.body.addEventListener('itch-satisfied', satisfactionReaction);
 
@@ -18,6 +20,11 @@ function main() {
     
     document.body.addEventListener("scratch-up", vibrationSensation);
     document.body.addEventListener("scratch-down", vibrationSensation);
+
+    document.body.addEventListener("scratch-up", audioPlay);
+    document.body.addEventListener("scratch-down", audioPlay);
+
+    document.body.addEventListener("pointerup", audioPause);
 }
 
 function satisfactionReaction() {
@@ -49,4 +56,15 @@ function randomX() {
 function vibrationSensation()
 {
     navigator.vibrate(200);
+}
+
+
+const scratchSound = document.getElementById("audio");
+
+function audioPlay(itch){
+    scratchSound.play();
+}
+
+function audioPause(){
+    scratchSound.pause();
 }
