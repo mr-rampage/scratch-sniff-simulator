@@ -16,8 +16,8 @@ function main() {
     document.body.addEventListener("scratch-up", presentSmells);
     document.body.addEventListener("scratch-down", presentSmells);
     
-    document.body.addEventListener("scratch-up", purrrrr);
-    document.body.addEventListener("scratch-down", purrrrr);
+    document.body.addEventListener("scratch-up", vibrationSensation);
+    document.body.addEventListener("scratch-down", vibrationSensation);
 }
 
 function satisfactionReaction() {
@@ -39,7 +39,7 @@ function createSmell(parent, smell = "placeholder text") {
     return text;
 }
 
-function purrrrr()
+function vibrationSensation()
 {
-    // vibrate the phone
+    navigator.vibrate(200);
 }
