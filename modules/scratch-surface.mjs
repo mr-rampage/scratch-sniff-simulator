@@ -16,10 +16,11 @@ function createImage(url)
 }
 
 function setupView(element) {
+    const template = document.getElementById(
+        "scratch-surface-template"
+    ).content;
     const shadow = element.attachShadow({mode: "closed"});
-    const text = document.createElement("span");
-    text.textContent = "Hello World";
-    shadow.appendChild(text);
+    shadow.appendChild(template.cloneNode(true));
     return shadow;
 }
     
@@ -44,21 +45,29 @@ function createScratchDownEvent() {
 }
 
 function createScratchEvent(change) {
-    if (change > 0)
-        return createScratchUpEvent()
     if (change < 0)
+        return createScratchUpEvent()
+    if (change > 0)
         return createScratchDownEvent()
     return null;
 }
 
+function notifyScratch(element, change, lastEvent) {
+    const scratchEvent = createScratchEvent(change);
+    if (scratchEvent !== null && scratchEvent.type !== lastEvent) {
+        element.dispatchEvent(scratchEvent)
+        return scratchEvent.type;
+    }
+    return lastEvent;
+}
+
 function handleMouseMove(element) {
     let lastPosition = -1;
+    let lastEvent = null;
     return function handler(e) {
         if (lastPosition >= 0) {
             const change = getDelta(lastPosition, e);
-            const scratchEvent = createScratchEvent(change);
-            if (scratchEvent != null)
-                element.dispatchEvent(scratchEvent)
+            lastEvent = notifyScratch(element, change, lastEvent);
         }
         lastPosition = e.buttons > 0
             ? e.clientY
@@ -68,6 +77,6 @@ function handleMouseMove(element) {
 
 function getDelta(lastValue, {buttons, clientY})
 {
-    if (buttons == 0) return 0;
+    if (buttons === 0) return 0;
     return clientY - lastValue;
 }
