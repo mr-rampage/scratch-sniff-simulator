@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="modules/app.mjs" type="module"></script>
+    <script defer>
+        document.addEventListener("scratch-up", e => console.log("Scratched Up!"));
+        document.addEventListener("scratch-down", e => console.log("Scratched Down!"));
+    </script>
 </head>
 <body>
-    <p>Hello, World!</p>
-	<scratch-surface></scratch-surface>
+    <div style="height:100vh">
+        <scratch-surface style="height: 100%; background:grey; display: block;">
+        </scratch-surface>
+    </div>
 </body>
 </html>
