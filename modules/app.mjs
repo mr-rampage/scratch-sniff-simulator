@@ -13,7 +13,7 @@ function displayItch(itch) {
 }
 
 function main() {
-    const itch = getItches()[0];
+    const itch = getItches()[2];
     const scratchEffect = createAudioEffect(itch);
 
     prepareForScratching(document.body, itch);

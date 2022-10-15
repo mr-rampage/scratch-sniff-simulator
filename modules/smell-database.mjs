@@ -13,8 +13,4 @@ export const smells = [
     createSmell("Rose"),
     createSmell("Chamomile"),
     createSmell("Ammonia"),
-    
-    
-    
-    
 ]
