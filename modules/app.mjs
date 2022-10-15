@@ -89,7 +89,7 @@ function createSmell(parent, smell) {
 }
 
 function randomX() {
-    return Math.floor(Math.random() * 100);
+    return Math.floor(Math.random() * 72);
 }
 
 function vibrationSensation() {
