@@ -2,5 +2,10 @@
 {
     constructor() {
         super();
+        setUpView(this);
     }
+}
+
+function setupView(element) {
+    element.textContent = "Smell Description";
 }
