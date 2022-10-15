@@ -27,8 +27,8 @@ function main() {
     document.body.addEventListener("scratch-up", shake);
     document.body.addEventListener("scratch-down", shake);
 
-    document.body.addEventListener("scratch-up", presentSmells);
-    document.body.addEventListener("scratch-down", presentSmells);
+    document.body.addEventListener("scratch-up", throttle(presentSmells));
+    document.body.addEventListener("scratch-down", throttle(presentSmells));
 
     document.body.addEventListener("scratch-up", vibrationSensation);
     document.body.addEventListener("scratch-down", vibrationSensation);
@@ -37,9 +37,28 @@ function main() {
     document.body.addEventListener("scratch-down", scratchEffect.play);
 
     document.body.addEventListener("pointerup", scratchEffect.stop);
+    document.body.addEventListener("pointerup", unshake);
+
     runTutorial();
 }
 function shake(){
+    if (document.body.classList.contains("shaking")) return 0;
+    document.body.classList.add("shaking");
+}
+function unshake(){
+    document.body.classList.remove("shaking");
+}
+
+function throttle(f)
+{
+    let execute = true;
+    return () => {
+        if (execute === true) {
+            f();
+            execute = false;
+            setTimeout(() => execute = true, 1000);
+        }
+    }
     
 }
 
