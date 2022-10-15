@@ -10,6 +10,11 @@
     }
 }
 
+function createImage(url)
+{
+    // return an image
+}
+
 function setupView(element) {
     const shadow = element.attachShadow({mode: "closed"});
     const text = document.createElement("span");
