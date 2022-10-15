@@ -1,19 +1,19 @@
 ﻿
 // itch is an element
-export function start(itch)
+export default function start(itcher, itch)
 {
-    let resistance = itch.resistance;
-    const handler = satisfactionDispatcher(itch, resistance);
-
-    itch.addEventListener("scratch-up", handler);
-    itch.addEventListener("scratch-down", handler);
+    const handler = satisfactionDispatcher(itcher, getSatisfaction(itch));
+    itcher.addEventListener("scratch-up", handler);
+    itcher.addEventListener("scratch-down", handler);
 }
 
-function satisfactionDispatcher(itch, resistance) {
+function satisfactionDispatcher(itcher, numberOfScratches) {
     let scratches = 0;
     return () => {
         scratches += 1;
-        itch.dispatchEvent(scratches === resistance ? createSatisfied() : null)
+        const satisfied = scratches === numberOfScratches ? createSatisfied() : null;
+        if (satisfied !== null)
+            itcher.dispatchEvent(satisfied);
     };
 }
 

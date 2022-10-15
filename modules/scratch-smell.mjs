@@ -1,11 +1,4 @@
-﻿export default class ScratchSmell extends HTMLSpanElement
+﻿export default function getRandomSmell(listOfSmells)
 {
-    constructor() {
-        super();
-        setUpView(this);
-    }
-}
-
-function setupView(element) {
-    element.textContent = "Smell Description";
+    // return a random smell.
 }

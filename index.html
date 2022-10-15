@@ -5,14 +5,26 @@
     <title>Title</title>
     <link rel="manifest" href="./app.webmanifest">
     <script src="modules/app.mjs" type="module"></script>
+    <script type="module">
+        import start from './modules/itch.mjs';
+        import createItch from "./modules/scratch-model.mjs";
+        
+        start(document.body, createItch());
+        
+        document.body.addEventListener('itch-satisfied', () => {
+            const feedback = document.getElementById('itch')
+            feedback.innerText = "Feels so goood!!";
+        })
+        document.body.addEventListener("scratch-up", () => console.log(Math.random()));
+        document.body.addEventListener("scratch-down", () => console.log(Math.random()));
+    </script>
     <script defer>
-        document.addEventListener("scratch-up", e => console.log("Scratched Up!"));
-        document.addEventListener("scratch-down", e => console.log("Scratched Down!"));
         customElements
             .whenDefined("scratch-surface")
             .then(() => {
                 const scratch = document.getElementsByTagName("scratch-surface");
                 scratch[0].style.background = "url('https://dinoanimals.com/wp-content/uploads/2021/01/Burmese-cat-16.jpg')"
+                
             });
     </script>
     <template id="scratch-surface-template">
@@ -21,9 +33,12 @@
 </head>
 <body>
     <div style="height:100vh">
-        <scratch-surface style="height: 100%; display: block;">
+        <scratch-surface style="height: 50%; display: block;">
         </scratch-surface>
-        <scratch-smell style="height: 30%; background:white; display: block;"></scratch-smell>
+        <div id="itch" style="height:50%;">
+        </div>
+    </div>
+    <div id="smell">
     </div>
 </body>
 </html>
