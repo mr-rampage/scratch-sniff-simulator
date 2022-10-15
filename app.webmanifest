@@ -1,0 +1,15 @@
+{
+  "name": "Scratch and Sniff Application",
+  "short_name": "scratch-sniff",
+  "start_url": ".",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/icons/perfume",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "theme_color": "salmon",
+  "background_color": "white"
+}
