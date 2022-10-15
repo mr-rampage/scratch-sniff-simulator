@@ -2,18 +2,20 @@
 
 export default function getSmells() {
     return [
-        createSmell("Fruit Notes"),
-        createSmell("Toasted Notes"),
-        createSmell("Almond"),
-        createSmell("Herbaceous Notes"),
-        createSmell("Smokey"),
-        createSmell("Chocolate"),
-        createSmell("Vanilla"),
-        createSmell("Coffee"),
-        createSmell("Oak"),
-        createSmell("Cedar"),
-        createSmell("Rose"),
-        createSmell("Chamomile"),
-        createSmell("Ammonia"),
+        createSmell("Fruit Notes", "Is that apple you detect?", "high"),
+        createSmell("Toasted Notes", "", "medium"),
+        createSmell("Almond", "", "low"),
+        createSmell("Herbaceous Notes", "", "low"),
+        createSmell("Smokey", "", "medium"),
+        createSmell("Chocolate", "", "medium"),
+        createSmell("Vanilla", "", "high"),
+        createSmell("Coffee", "", "high"),
+        createSmell("Oak", "", "medium"),
+        createSmell("Cedar", "", "low"),
+        createSmell("Rose", "", "low"),
+        createSmell("Chamomile", "", "medium"),
+        createSmell("Ammonia", "", "high"),
+        createSmell("Fish", "", "high"),
+        createSmell("Metal", "", "high")
     ];
 }
