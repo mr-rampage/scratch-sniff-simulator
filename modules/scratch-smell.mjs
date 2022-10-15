@@ -1,4 +1,8 @@
-﻿export default function getRandomSmell(listOfSmells)
+﻿import Smell from smell-model.mjs;
+export default function getRandomSmell(listOfSmells)
 {
-    // return a random smell.
+	int min = 0;
+	int max = listOfSmells.size() - 1;
+	int smellIndex = Math.floor(Math.random() * max);
+	return listOfSmells(smellIndex);	
 }
